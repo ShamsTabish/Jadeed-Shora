@@ -12,43 +12,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import urdu.sabirdanish.databinding.ActivityMainBinding
-import java.security.InvalidParameterException
-
-
-fun timeConversion(s: String): String {
-    // Write your code here
-    fun handleAM(hour: String, minute: String, seconds: String): String {
-        if (hour.equals("12"))
-            return "00:$minute:$seconds"
-        return "$hour:$minute:$seconds"
-
-    }
-
-    fun handlePM(hour: String, minute: String, seconds: String): String {
-        if (hour.equals("12"))
-            return "12:$minute:$seconds"
-        else return "${(hour.toInt() + 12).toString()}:$minute:$seconds"
-    }
-
-    val (hour, minute, secondsWithMeridiem) = s.split(":")
-    val seconds = secondsWithMeridiem.substring(0, 2)
-    val meridiem = secondsWithMeridiem.substring(2)
-    println("$hour: $minute: $seconds : $meridiem")
-    when (meridiem.uppercase().trim()) {
-        "PM" -> return handlePM(hour, minute, seconds)
-        "AM" -> return handleAM(hour, minute, seconds)
-        else -> throw InvalidParameterException()
-    }
-
-}
-
-fun mains(args: Array<String>) {
-    println(timeConversion("07:05:45PM"))
-    println(timeConversion("12:05:45AM"))
-    println(timeConversion("12:05:45PM"))
-    println(timeConversion("11:05:45PM"))
-
-}
 
 class MainActivity : AppCompatActivity() {
 

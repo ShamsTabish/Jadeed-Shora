@@ -7,7 +7,7 @@ data class Book(val pageNumber: Int, val bookUrl: Int, val maxPages: Int)
 object CurrentOpenBook {
     var screenHeight: Int = 1050
     var screenWidth: Int = 1000
-    private val currentBookStatus = AtomicReference<Book>(Book(1, R.raw.taskeen, 67))
+    private val currentBookStatus = AtomicReference(Book(1, R.raw.taskeen, 67))
     fun getBookInfo(): Book = currentBookStatus.get()
     fun getPageNo(): Int = currentBookStatus.get().pageNumber
     fun getBookResource(): Int = currentBookStatus.get().bookUrl
@@ -25,7 +25,7 @@ object CurrentOpenBook {
         return nextPage
     }
 
-    fun setPreviousPageNumber(): Int {
+    fun getPreviousPageNumber(): Int {
         val maxPages = currentBookStatus.get().maxPages
         val previousNumber = currentBookStatus.get().pageNumber - 1
         val previousPage = if (previousNumber < 1) 1 else previousNumber

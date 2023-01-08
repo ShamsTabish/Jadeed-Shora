@@ -48,7 +48,7 @@ class PoetFragment : Fragment() {
         izterab.setOnClickListener { view ->
             println("Worksxxx.....")
             CurrentOpenBook.openBook(R.raw.taskeen,67)
-            CurrentOpenBook.goToPageNo(24)
+            CurrentOpenBook.goToPageNo(1)
             val pdfIntent = Intent(view?.context, BookReader::class.java)
             startActivity(pdfIntent)
             Snackbar.make(view, "Izteraab", Snackbar.LENGTH_LONG)
